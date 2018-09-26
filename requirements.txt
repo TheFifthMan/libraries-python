@@ -1,0 +1,9 @@
+allure-pytest==2.5.1
+allure-python-commons==2.5.1
+atomicwrites==1.2.1
+attrs==18.2.0
+more-itertools==4.3.0
+pluggy==0.7.1
+py==1.6.0
+pytest==3.8.1
+six==1.11.0
