@@ -57,3 +57,5 @@ soup.select("p nth-of-type(3)")
 标签中的属性： soup('p)[0]['class']
 标签的名字:   soup('p')[0].name 
 ```
+
+* bs4还可插入html的标签，组成新的html文件。暂时用不到，不表。
