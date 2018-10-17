@@ -8,7 +8,8 @@
 
 from selenium import webdriver
 import os 
-# 必须使用绝对路径
+# demo 
 driver = webdriver.Chrome(executable_path='C://project//libraries-python//selenium//chromedriver.exe')
 driver.get('https://www.baidu.com')
 print(driver.title)
+
