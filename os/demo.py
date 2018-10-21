@@ -26,19 +26,6 @@ else:
 py = [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1] == '.txt']
 print(py)
 
-# 寻找给定路径下的所有py文件
-# os.walk(top, topdown=Ture, onerror=None, followlinks=False)
-'''
-top: 给定的路径
-topdown: 自上而下搜索
-onerror: 函数，调用需要传一个参数，OSError实例，出现错误后执行
-followelinks: 通过软连接进行访问
-'''
-for dirname,dirpath,filenames in os.walk('.',topdown=False):
-    for file in filenames:
-        if os.path.spli
-        text(file)[1] == '.py':
-            print(file) 
 
 # 文件复制
 
