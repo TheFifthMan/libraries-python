@@ -16,5 +16,5 @@
 14. [threading](threading/README.md)
 15. [json](json/README.md)
 16. [jinja2](jinja2/README.md)
- 
+17. [logs](logs/README.md)
 
