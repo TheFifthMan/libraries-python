@@ -11,14 +11,14 @@ headers = {
 
 async def fetch_url(i):
     #async with aiohttp.ClientSession() as session:
-        async with aiohttp.request('GET',url.format(str(i)),headers=headers) as res:
-            if res.status == 200:
-                print("第{}页返回成功".format(i))
-                result = await res.text()
-            else:
-                print("第{}页返回{}".format(i,res.status)) 
-                result=None
-            return result
+    async with aiohttp.request('GET',url.format(str(i)),headers=headers) as res:
+        if res.status == 200:
+            print("第{}页返回成功".format(i))
+            result = await res.text()
+        else:
+            print("第{}页返回{}".format(i,res.status)) 
+            result=None
+        return result
 
 async def fetch_picture(wallpaper_id):
     folder = 'picture2'
@@ -55,6 +55,7 @@ async def parse_picture(i):
 if __name__ == "__main__":
     start = datetime.now()     
     loop = asyncio.get_event_loop()
+    # ensure_future 保证异步协程的调用
     tasks = [asyncio.ensure_future(parse_picture(i)) for i in range(3)]
     loop.run_until_complete(asyncio.wait(tasks))
     end = datetime.now()
