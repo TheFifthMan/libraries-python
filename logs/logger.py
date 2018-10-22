@@ -17,7 +17,7 @@ def set_color(color, handle=std_out_handle):
     return bool
 
 class Logger(object):
-    def __init__(self,name,path,maxBytes=10240000,backupCount=5,clevel=logging.DEBUG,flevel=logging.DEBUG):
+    def __init__(self,name,path,clevel=logging.DEBUG,flevel=logging.DEBUG):
         self.logger = logging.getLogger(name)
         # 这个必须设置，否则默认不显示debug或者info的信息，也就是说这个的配置会覆盖掉cmd和file的配置
         self.logger.setLevel(logging.DEBUG)
@@ -32,7 +32,7 @@ class Logger(object):
         fh = logging.handlers.RotatingFileHandler(
             path,
             maxBytes=10240000,
-            backupCount=backupCount,
+            backupCount=5,
             encoding='utf-8'
         )
         fh.setFormatter(_fmt)
