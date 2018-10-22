@@ -20,18 +20,8 @@ async def fetch_url(i):
                 result=None
             return result
 
-def save(folder,wallpaper_id,res):
-    with open(folder+'/'+wallpaper_id+'.jpg','wb') as f:
-        print("--------写入id为{}的图片".format(wallpaper_id))
-        while 1:
-            chunk = await res.content.read(10)
-            if not chunk:
-                break
-            f.write(chunk)
-
-            
 async def fetch_picture(wallpaper_id):
-    folder = 'picture'
+    folder = 'picture2'
     if not os.path.exists(folder):
         os.mkdir(folder)
     url = 'https://alpha.wallhaven.cc/wallpapers/full/wallhaven-{}.jpg'.format(wallpaper_id)
@@ -47,7 +37,7 @@ async def fetch_picture(wallpaper_id):
         else:
             print('--------{}返回{}'.format(url,res.status))
             with open('aiohttp/error.txt','a')as f:
-                f.writelines('{}返回{}'.format(url,res.status))
+                f.writelines('{}:{}\n'.format(url,res.status))
 
 
 async def parse_picture(i):
@@ -65,7 +55,7 @@ async def parse_picture(i):
 if __name__ == "__main__":
     start = datetime.now()     
     loop = asyncio.get_event_loop()
-    tasks = [parse_picture(i) for i in range(100) ]
+    tasks = [asyncio.ensure_future(parse_picture(i)) for i in range(3)]
     loop.run_until_complete(asyncio.wait(tasks))
     end = datetime.now()
     duration = end - start
