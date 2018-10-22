@@ -30,7 +30,7 @@ async def fetch_picture(wallpaper_id):
             with open(folder+'/'+wallpaper_id+'.jpg','wb') as f:
                 print("--------写入id为{}的图片".format(wallpaper_id))
                 while 1:
-                    chunk = await res.content.read(10)
+                    chunk = await res.content.read(1024)
                     if not chunk:
                         break
                     f.write(chunk)
