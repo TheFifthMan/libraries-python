@@ -36,7 +36,7 @@ async def fetch_picture(wallpaper_id):
                     f.write(chunk)
         else:
             print('--------{}返回{}'.format(url,res.status))
-            with open('aiohttp/error.txt','a')as f:
+            with open('aiohttp/error.txt','a',encoding='utf-8')as f:
                 f.writelines('{}:{}\n'.format(url,res.status))
 
 
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     start = datetime.now()     
     loop = asyncio.get_event_loop()
     # ensure_future 保证异步协程的调用
-    tasks = [asyncio.ensure_future(parse_picture(i)) for i in range(3)]
+    tasks = [asyncio.ensure_future(parse_picture(i)) for i in range(100)]
     loop.run_until_complete(asyncio.wait(tasks))
     end = datetime.now()
     duration = end - start

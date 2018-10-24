@@ -6,6 +6,7 @@ __pycache__
 checkmarx.py
 reports*
 test*
-picture
+picture*
 *.log
 checkmarx*
+error*
