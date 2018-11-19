@@ -49,10 +49,6 @@ frame = self.driver.find_element_by_xpath('//table/tbody/tr[2]/td[2]/iframe')
 self.driver.switch_to_frame(frame)
 ```
 
-## 上传文件
-
-## 处理下拉框
-
 ## 常见查找元素的方法
 ```py
 find_element_by_id
