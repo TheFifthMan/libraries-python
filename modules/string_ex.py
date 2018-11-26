@@ -1,0 +1,22 @@
+import string
+print("大小写字母：ascii_letters: {}".format(string.ascii_letters))
+print("小写字母：ascii_lowercase: {}".format(string.ascii_lowercase))
+print("大写字母：ascii_uppercase: {}".format(string.ascii_uppercase))
+print("十进制： digits: {}".format(string.digits))
+print("16进制： hexdigits: {}".format(string.hexdigits))
+print("8进制： octdigits: {}".format(string.octdigits))
+print("特殊字符：punctuation: {}".format(string.punctuation))
+print("可打印的字符: printable: {}".format(string.printable))
+print("空格: whitespace: {}".format(string.whitespace))
+
+print("format usage")
+print("{2},{1},{0}".format('a','b','c'))
+print("Hello, {name}".format(name="johnw"))
+print("{:>30}".format("right aligned"))
+print("{:<30}".format("left aligned"))
+print("{:^30}".format("center"))
+print("int: {0:d} ; hex: {0:x}; oct: {0:o}; bin: {0:b}".format(43))
+
+t = string.Template("$who like $what")
+s = t.substitute(who="johnw",what="program")
+print(s)
