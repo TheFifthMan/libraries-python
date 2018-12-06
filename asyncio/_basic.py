@@ -2,11 +2,13 @@
 # 简单的例子
 import asyncio
 from datetime import datetime 
+sega = asyncio.Semaphore(3)
 
 async def test_asyncio():
-    print("start : {}".format(datetime.now()))
-    await asyncio.sleep(5)
-    print('end : {}'.format(datetime.now()))
+    with(await sega):
+        print("start : {}".format(datetime.now()))
+        await asyncio.sleep(15)
+        print('end : {}'.format(datetime.now()))
 
 
 if __name__ == "__main__":
