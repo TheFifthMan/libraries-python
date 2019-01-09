@@ -1,5 +1,6 @@
 # coding:utf-8 
 # 多线程的使用一般结合队列来做。
+# All done: 0:00:17.692017
 
 import queue 
 from datetime import datetime 
@@ -14,19 +15,19 @@ def put_items():
 
 def worker(i):
     while not Q.empty():
-        print("线程{}开始处理数据,开始时间：{}".format(i,datetime.now()))
         item = Q.get()
-        time.sleep(1)
         print('线程{}处理完数据{}，结束时间{}'.format(i,item,datetime.now()))
-        Q.tasks_done()
+    Q.all_tasks_done
 
 if __name__ == "__main__":
+    start = datetime.now()
     put_items()
-    ts = [threading.Thread(target=worker,args=(i,))for i in range(20)]
+    ts = [threading.Thread(target=worker,args=(i,))for i in range(400)]
     for t in ts:
         t.start()
 
     for t in ts:
         t.join()
+    end = datetime.now()
 
-    print("All done")
+    print("All done: {}".format(end - start))

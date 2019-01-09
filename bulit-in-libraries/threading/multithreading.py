@@ -19,6 +19,9 @@
 进程7588: 线程0 正在消耗:15 时间：2019-01-09 12:50:48.761808
 进程7588: 线程1 正在消耗:16 时间：2019-01-09 12:50:48.761808
 进程7588: 线程2 正在消耗:17 时间：2019-01-09 12:50:48.761808
+
+
+100000 花费 47秒
 '''
 
 from multiprocessing import Pool
@@ -29,18 +32,12 @@ from datetime import datetime
 
 def producer(i):
     Q = queue.Queue()
-    if i == 1:
-        for x in range(1,5):
-            Q.put(x)
-    elif i == 2:
-        for x in range(5,10):
-            Q.put(x)
-    elif i ==3:
-        for x in range(10,15):
-            Q.put(x)
-    elif i == 4:
-        for x in range(15,20):
-            Q.put(x)
+    start = 2500*(i-1)
+    end = 100000 * int(i / 4)
+
+    for x in range(start,end):
+        Q.put(x)
+  
     
     return Q
 
@@ -49,14 +46,12 @@ def process_thread(Q,j):
         item = Q.get()
         print("进程{}: 线程{} 正在消耗:{} 时间：{}".format(os.getpid(),j,item,datetime.now()))
 
-
-    
     Q.all_tasks_done
 
 
 def tasks(i):
     Q = producer(i)
-    ts = [threading.Thread(target=process_thread,args=(Q,j)) for j in range(10)]
+    ts = [threading.Thread(target=process_thread,args=(Q,j)) for j in range(400)]
     for t in ts:
         t.start()
     for t in ts:
@@ -64,10 +59,15 @@ def tasks(i):
 
 
 if __name__ == "__main__":
+    start = datetime.now()
     p = Pool(4)
-    for i in range(5):
+    for i in range(1,5):
+        print(i)
         p.apply_async(tasks,args=(i,))
     p.close()
     p.join()
+    end = datetime.now()
+    waste = end-start
+    print("一共花费了： {}".format(waste))
 
 
