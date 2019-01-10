@@ -64,3 +64,25 @@ punctuation='!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
 whitespace=' \t\n\r\x0b\x0c'
 '''
 
+
+def covert(values):
+    text = """
+    Variable : {var}
+    Escape : {{var}}
+    Variable in text : {var}iable
+    """
+    print("format: ",text.format(**values))
+
+import random
+def generate_passwd():
+    uppercase_wd =random.choices(string.ascii_uppercase,k=random.randint(3,5)) 
+    lowercase_wd = random.choices(string.ascii_lowercase,k=random.randint(3,6))
+    digits_wd = random.choices(string.digits,k=random.randint(3,6))
+    punctuation_wd = random.choices('!@#$%^&*()[<>?]',k=random.randint(3,4))
+    a = uppercase_wd+lowercase_wd+digits_wd+punctuation_wd
+    random.shuffle(a)
+    print(''.join(a))
+
+
+if __name__ == "__main__":
+    generate_passwd()
