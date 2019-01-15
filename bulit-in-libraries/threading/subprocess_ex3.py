@@ -1,5 +1,5 @@
 import subprocess
-'''
+
 # 运行外部命令
 # completed = subprocess.run(['ls','-al'])
 # print("return code: ",completed.returncode) # return code:  0c
@@ -15,9 +15,9 @@ except subprocess.CalledProcessError as err:
     print("Err:",err)  #Err: Command '['false']' returned non-zero exit status 1.
 
 # 捕捉输出
-# complete = subprocess.run(['ls','-al'],stdout=subprocess.PIPE)
-# print("return code : ",complete.returncode)
-# print("stdout: ",complete.stdout.decode("utf-8"))
+complete = subprocess.run(['ls','-al'],stdout=subprocess.PIPE)
+print("return code : ",complete.returncode)
+print("stdout: ",complete.stdout.decode("utf-8"))
 
 # 捕捉错误输出
 completed = subprocess.run(["false"],stderr=subprocess.PIPE)
@@ -44,7 +44,7 @@ print(stdout.decode())
 cat = subprocess.Popen(['cat','README.md'],stdout=subprocess.PIPE)
 grep = subprocess.Popen(["grep","testing"],stdin=cat.stdout,stdout=subprocess.PIPE)
 print(grep.stdout.readline())
-'''
+
 # 子进程的信号传递
 import os,sys,time
 import signal
