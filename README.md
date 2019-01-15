@@ -1,6 +1,9 @@
 # 收集写过的python代码片段
 温故而知新
 
+Hello
+This is testing
+
 ## Python 内建模块使用
 1. [协程asyncio](asyncio/README.md)
 2. [threading](threading/README.md)

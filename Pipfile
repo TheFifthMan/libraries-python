@@ -1,6 +1,6 @@
 [[source]]
 name = "pypi"
-url = "https://pypi.org/simple"
+url = "http://mirrors.aliyun.com/pypi/simple"
 verify_ssl = true
 
 [dev-packages]
@@ -37,4 +37,4 @@ xlrd = "==1.1.0"
 yarl = "==1.2.6"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"
